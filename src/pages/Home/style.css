@@ -1,0 +1,43 @@
+.all-content {
+  background-color: aqua;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 20px;
+  width: 24em;
+  border: 1px solid #000;
+}
+h1 {
+  text-align: center;
+}
+.content {
+  display: flex;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10em;
+}
+
+.content a {
+  padding: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.about {
+  background-color: #f0f0f0;
+  color: blue;
+}
+.about:hover {
+  background-color: blue;
+  color: aqua;
+}
+
+.contact {
+  background-color: #627edb;
+  color: #fff;
+}
+.contact:hover {
+  background-color: blue;
+  color: aqua;
+}
