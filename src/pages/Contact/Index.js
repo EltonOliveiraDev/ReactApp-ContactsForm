@@ -5,25 +5,23 @@ import "./style.css";
 import { Container, Row, Form, Button } from "react-bootstrap";
 
 const initialValue = {
-  userId: null,
-  id: "",
   name: "",
   email: "",
-  body: "",
+  message: "",
 };
 const Contact = () => {
   const [values, setValue] = useState(initialValue);
   const history = useNavigate();
 
   function onChange(evt) {
-    const { name, value } = evt.target;
+    const { data, value } = evt.target;
 
-    setValue({ ...values, [name]: value });
+    setValue({ ...values, [data]: value });
   }
   function onSubmit(evt) {
     evt.preventDefault();
     axios
-      .post(`https://jsonplaceholder.typicode.com/posts/1/comments`, values)
+      .post('http://localhost:1337/api/contacts', values)
       .then((response) => {
         alert("Comentário enviado com sucesso!");
         history("/about");
@@ -34,7 +32,7 @@ const Contact = () => {
       <Row>
         <Form className="form-content" onSubmit={onSubmit}>
           <Form.Group>
-            <Form.Label>Name:</Form.Label>
+            <Form.Label>Nome</Form.Label>
             <Form.Control
               id="name"
               type="text"
@@ -42,7 +40,7 @@ const Contact = () => {
               placeholder="Seu nome"
               onChange={onChange}
             />
-            <Form.Label>Email Address: </Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               id="email"
               type="email"
@@ -50,12 +48,12 @@ const Contact = () => {
               placeholder="name@exemplo.com.br"
               onChange={onChange}
             />
-            <Form.Label>Your message:</Form.Label>
+            <Form.Label>Motivo do contato</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
-              id="body"
-              name="body"
+              id="message"
+              name="message"
               onChange={onChange}
             />
             <Button type="submit">
@@ -69,3 +67,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
