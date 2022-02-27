@@ -9,23 +9,24 @@ const initialValue = {
   email: "",
   message: "",
 };
+
 const Contact = () => {
-  const [values, setValue] = useState(initialValue);
-  const history = useNavigate();
+  const [value, setValue] = useState(initialValue);
+  const navigate = useNavigate();
 
   function onChange(evt) {
-    const { data, value } = evt.target;
-
-    setValue({ ...values, [data]: value });
+    setValue({ ...value, [evt.target.name]: evt.target.value });
   }
-  function onSubmit(evt) {
+
+  async function onSubmit(evt) {
     evt.preventDefault();
-    axios
-      .post('http://localhost:1337/api/contacts', values)
-      .then((response) => {
-        alert("Comentário enviado com sucesso!");
-        history("/about");
-      });
+    const response = await axios.post("http://localhost:1337/api/contacts", {
+      data: value,
+    });
+
+    console.log("POST response", response);
+    alert("Comentário enviado com sucesso!");
+    navigate("/about");
   }
   return (
     <Container>
@@ -56,9 +57,7 @@ const Contact = () => {
               name="message"
               onChange={onChange}
             />
-            <Button type="submit">
-              Send message
-            </Button>
+            <Button type="submit">Send message</Button>
           </Form.Group>
         </Form>
       </Row>
@@ -67,4 +66,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

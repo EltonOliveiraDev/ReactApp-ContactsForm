@@ -3,22 +3,29 @@ import axios from "axios";
 import "./style.css";
 
 export default class About extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-  this.state = {
-    contacts: [],
-  };
-}
+    this.state = {
+      contacts: [],
+    };
+  }
   componentDidMount = async () => {
     const response = await axios.get("http://localhost:1337/api/contacts");
-    this.setState({ contacts: Array.from(response.data) });
+    console.log(response);
+    const contacts = response.data.data.map((entry) => ({
+      id: entry.id,
+      name: entry.attributes.name,
+      email: entry.attributes.email,
+      message: entry.attributes.message,
+    }));
+    this.setState({ contacts });
   };
   render() {
     return (
       <div className="all-contact">
         <ul>
           {this.state.contacts.map((contact) => (
-            <li>
+            <li key={contact.id}>
               {contact.name}
               <br />
               {contact.email}
