@@ -7,7 +7,7 @@
 ### Axios: https://www.digitalocean.com/community/tutorials/react-axios-react-pt
 ### Post-axios https://www.freecodecamp.org/portuguese/news/como-usar-o-axios-com-o-react-o-guia-definitivo-2021/
 
-# Base de conhecimento Strap.io:
+# Base de conhecimento Strapi.io:
 ### https://docs.strapi.io/developer-docs/latest/developer-resources/content-api/integrations/react.html
 ### https://docs.strapi.io/developer-docs/latest/getting-started/quick-start.html#_1-install-strapi-and-create-a-new-project
 ### https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/installation/cli.html#creating-a-strapi-project
